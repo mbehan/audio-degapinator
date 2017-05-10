@@ -9,7 +9,7 @@
 import AVFoundation
 
 protocol AudioDegapinatorUpdatesDelegate: class {
-    func degapinatorSavedTime(_: TimeInterval, totalTimeSaved: TimeInterval)
+    func degapinatorSavedTime(timeSaved: TimeInterval, totalTimeSaved: TimeInterval)
 }
 
 class AudioDegapinator: NSObject, AVAudioPlayerDelegate {
@@ -68,7 +68,7 @@ class AudioDegapinator: NSObject, AVAudioPlayerDelegate {
             let newTimeSaving = diff / 2.0
             timeSaved += newTimeSaving
             
-            delegate?.degapinatorSavedTime(newTimeSaving, totalTimeSaved: timeSaved)
+            delegate?.degapinatorSavedTime(timeSaved: newTimeSaving, totalTimeSaved: timeSaved)
         }
         
         self.audioPlayer.rate = Float(rate)
